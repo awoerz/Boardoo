@@ -1,42 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import HeaderItem from './HeaderItem';
+import logo from '../../src/boardoo-logo.png';
 
-// export default function Header(props) {
-//     const [headerItems, setHeaderItems ] = useState([
-//         {
-//             id: 1,
-//             title: 'Home',
-//             link: '/Home'
-//         }
-//     ]);
-//     return (
-//         <div className='header'>
-//             {state.headerItem.map(item => {
-//                 return <HeaderItem key={item.id} title={item.title} link={item.link}/>
-//             })}
-//         </div> 
-//     )
-// }
+export default function Header() {
+    const [headerItems, setHeaderItems ] = useState([
+        {
+            id: 1,
+            title: 'Boards',
+            link:  '.Boards'
+        }
+    ]);
 
-export default class Header extends React.Component {
-    state = {
-        headerItems: [
-            {
-                id: 1,
-                title: 'Home',
-                link: './Home'
-            }
-        ]
+    const updateItems = (items) => {
+        setHeaderItems(items)
     }
-
-    render() {
-        return (
-            <div className='header'>
-                {this.state.headerItems.map(item => {
-                    return <HeaderItem key={item.id} title={item.title} link={item.link} />
-                })}
+    return (
+        <div className='header'>
+            <div className='logo-container'>
+                <img src={logo} />
             </div>
-        )
-    }
-
+            <div className='header-item-container'>
+            {headerItems.map(item => {
+                return <HeaderItem key={item.id} title={item.title} link={item.link}/>
+            })}
+            </div>
+        </div> 
+    )
 }
